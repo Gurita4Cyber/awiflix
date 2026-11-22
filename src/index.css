@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --cs-bg: #0e0f14;
+    --cs-bg-elevated: #151722;
+    --cs-surface: #1b1e2c;
+    --cs-surface-hover: #24283b;
+    --cs-border: rgba(255, 255, 255, 0.08);
+    --cs-accent: #3d63ff;
+    --cs-accent-hover: #5375ff;
+    --cs-accent-soft: rgba(61, 99, 255, 0.16);
+    --cs-accent-glow: rgba(61, 99, 255, 0.35);
+    --cs-text: #f1f5f9;
+    --cs-text-muted: #94a3b8;
+  }
+
+  [data-theme="amoled"] {
+    --cs-bg: #000000;
+    --cs-bg-elevated: #090a0e;
+    --cs-surface: #11131a;
+    --cs-surface-hover: #1a1d27;
+    --cs-border: rgba(255, 255, 255, 0.09);
+  }
+
+  [data-theme="midnight"] {
+    --cs-bg: #09101f;
+    --cs-bg-elevated: #0f1930;
+    --cs-surface: #162340;
+    --cs-surface-hover: #1e2f54;
+    --cs-border: rgba(148, 163, 184, 0.12);
+  }
+
+  [data-theme="purple"] {
+    --cs-bg: #0e0b16;
+    --cs-bg-elevated: #161124;
+    --cs-surface: #201834;
+    --cs-surface-hover: #2b2146;
+    --cs-border: rgba(192, 132, 252, 0.12);
+  }
+
+  [data-accent="blue"] {
+    --cs-accent: #3d63ff;
+    --cs-accent-hover: #5375ff;
+    --cs-accent-soft: rgba(61, 99, 255, 0.18);
+    --cs-accent-glow: rgba(61, 99, 255, 0.38);
+  }
+
+  [data-accent="cyan"] {
+    --cs-accent: #06b6d4;
+    --cs-accent-hover: #22d3ee;
+    --cs-accent-soft: rgba(6, 182, 212, 0.18);
+    --cs-accent-glow: rgba(6, 182, 212, 0.36);
+  }
+
+  [data-accent="violet"] {
+    --cs-accent: #8b5cf6;
+    --cs-accent-hover: #a78bfa;
+    --cs-accent-soft: rgba(139, 92, 246, 0.18);
+    --cs-accent-glow: rgba(139, 92, 246, 0.38);
+  }
+
+  [data-accent="rose"] {
+    --cs-accent: #f43f5e;
+    --cs-accent-hover: #fb7185;
+    --cs-accent-soft: rgba(244, 63, 94, 0.18);
+    --cs-accent-glow: rgba(244, 63, 94, 0.38);
+  }
+
+  [data-accent="emerald"] {
+    --cs-accent: #10b981;
+    --cs-accent-hover: #34d399;
+    --cs-accent-soft: rgba(16, 185, 129, 0.18);
+    --cs-accent-glow: rgba(16, 185, 129, 0.36);
+  }
+
+  [data-accent="amber"] {
+    --cs-accent: #f59e0b;
+    --cs-accent-hover: #fbbf24;
+    --cs-accent-soft: rgba(245, 158, 11, 0.18);
+    --cs-accent-glow: rgba(245, 158, 11, 0.36);
+  }
+
+  html,
+  body {
+    background-color: var(--cs-bg);
+    color: var(--cs-text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Custom sleek scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.22);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.42);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Theme utility classes */
+.cs-bg { background-color: var(--cs-bg); }
+.cs-bg-elevated { background-color: var(--cs-bg-elevated); }
+.cs-surface { background-color: var(--cs-surface); }
+.cs-surface-hover:hover { background-color: var(--cs-surface-hover); }
+.cs-border { border-color: var(--cs-border); }
+.cs-accent-bg { background-color: var(--cs-accent); }
+.cs-accent-bg:hover { background-color: var(--cs-accent-hover); }
+.cs-accent-text { color: var(--cs-accent); }
+.cs-accent-soft { background-color: var(--cs-accent-soft); }
+.cs-accent-ring { box-shadow: 0 0 0 2px var(--cs-accent); }
+.cs-accent-glow { box-shadow: 0 8px 28px -6px var(--cs-accent-glow); }
+
+/* Smooth fade-in animation (transform: none at end so position:fixed children stay viewport-anchored) */
+@keyframes csFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.animate-cs-fade {
+  animation: csFadeIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Range input styling for Video Player */
+input[type="range"].cs-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"].cs-range::-webkit-slider-runnable-track {
+  height: 5px;
+  border-radius: 9999px;
+}
+
+input[type="range"].cs-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 2px solid var(--cs-accent);
+  margin-top: -4.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.15s ease;
+}
+
+input[type="range"].cs-range:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+}

@@ -1,0 +1,24 @@
+{
+  "name": "cloudstream-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "api": "C:\\laragon\\bin\\php\\php-8.3.30-Win32-vs16-x64\\php.exe -S 127.0.0.1:8000",
+    "build": "vite build && powershell -Command \"Copy-Item -Path 'dist/assets/*' -Destination 'assets' -Recurse -Force\"",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "hls.js": "^1.5.18",
+    "lucide-react": "^0.469.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.9",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.0.9",
+    "vite": "^6.2.0"
+  }
+}
